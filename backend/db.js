@@ -14,7 +14,7 @@ const mongoConnect = () => {
 
       const fetched_data = mongoose.connection.db.collection("foodItems");
       fetched_data.find({}).toArray((err, data) => {
-        const foodCategory = mongoose.connection.db.collection("footCategory");
+        const foodCategory = mongoose.connection.db.collection("foodCategory");
 
         foodCategory.find({}).toArray((err, categoryData) => {
           if (err) {
