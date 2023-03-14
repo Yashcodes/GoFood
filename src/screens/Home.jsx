@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Card from "../components/Card";
-import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -134,8 +133,7 @@ const Home = () => {
                           >
                             {" "}
                             <Card
-                              itemName={itemName.name}
-                              itemImg={itemName.img}
+                              foodItem={itemName}
                               itemQuantity={itemName.options[0]}
                             />{" "}
                           </div>
