@@ -34,10 +34,11 @@ const SignUp = () => {
     console.log(json);
 
     if (json.success) {
+      localStorage.setItem("token", json.authToken);
+      console.log(localStorage.getItem("token"));
       naviagte("/");
-    }
-    else {
-      alert("Invalid Credentials")
+    } else {
+      alert("Invalid Credentials");
     }
   };
 
