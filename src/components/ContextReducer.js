@@ -39,8 +39,14 @@ const reducer = (state, action) => {
             price: action.price + food.price,
           };
         }
+
+        return arr;
       });
       return arr;
+
+    case "DROP":
+      let empArray = [];
+      return empArray;
 
     default:
       console.log("Error occured");

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
- 
+
 const Login = () => {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
-  }); 
- 
+  });
+
   const handleOnChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -26,11 +26,12 @@ const Login = () => {
         password: credentials.password,
       }),
     });
-    
+
     const json = await response.json();
     console.log(json);
 
     if (json.success) {
+      localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("token", json.authToken);
       console.log(localStorage.getItem("token"));
       navigate("/");

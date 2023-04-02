@@ -34,6 +34,7 @@ const SignUp = () => {
     console.log(json);
 
     if (json.success) {
+      localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("token", json.authToken);
       console.log(localStorage.getItem("token"));
       naviagte("/");
