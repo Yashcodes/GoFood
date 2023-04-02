@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Order = require("../models/Orders");
+const Orders = require("../models/Orders");
 
 router.post("/orderData", async (req, res) => {
   let data = req.body.order_data;
@@ -8,12 +8,12 @@ router.post("/orderData", async (req, res) => {
   console.log(req.body.email);
   //! If email not existing in the database then 'create' else 'InsertMnay()'
 
-  let eId = await Order.findOne({ email: req.body.email });
+  let eId = await Orders.findOne({ email: req.body.email });
   console.log(eId);
 
   if (eId === null) {
     try {
-      await Order.create({
+      await Orders.create({
         email: req.body.email,
         order_data: [data],
       }).then(() => {
@@ -25,7 +25,7 @@ router.post("/orderData", async (req, res) => {
     }
   } else {
     try {
-      await Order.findOneAndUpdate(
+      await Orders.findOneAndUpdate(
         { email: req.body.email },
         { $push: { order_data: data } }
       ).then(() => {
@@ -33,7 +33,7 @@ router.post("/orderData", async (req, res) => {
       });
     } catch (error) {
       res.send("Server Error", error.message);
-    } 
+    }
   }
 });
 
